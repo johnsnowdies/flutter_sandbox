@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sandbox/models/chatMessageModel.dart';
 
+import '../widgets/conversationList.dart';
+
 class ChatDetailPage extends StatefulWidget{
+  ConversationList conversation;
+
+  ChatDetailPage({required this.conversation});
+
   @override
   _ChatDetailPageState createState() => _ChatDetailPageState();
 }
@@ -11,11 +17,11 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   @override
   Widget build(BuildContext context) {
     List<ChatMessage> messages = [
-      ChatMessage(messageContent: "Hello, Will", messageType: "receiver"),
-      ChatMessage(messageContent: "How have you been?", messageType: "receiver"),
-      ChatMessage(messageContent: "Hey Kriss, I am doing fine dude. wbu?", messageType: "sender"),
-      ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "receiver"),
-      ChatMessage(messageContent: "Is there any thing wrong?", messageType: "sender"),
+      ChatMessage(messageContent: "Hello, Will", messageType: "receiver", ts: DateTime.now()),
+      ChatMessage(messageContent: "How have you been?", messageType: "receiver", ts: DateTime.now()),
+      ChatMessage(messageContent: "Hey Kriss, I am doing fine dude. wbu?", messageType: "sender", ts: DateTime.now()),
+      ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "receiver", ts: DateTime.now()),
+      ChatMessage(messageContent: "Is there any thing wrong?", messageType: "sender", ts: DateTime.now()),
     ];
 
     return Scaffold(
@@ -36,7 +42,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   ),
                   SizedBox(width: 2,),
                   CircleAvatar(
-                    backgroundImage: NetworkImage("https://eslider.ru/images/userImage1.jpeg"),
+                    backgroundImage: NetworkImage(widget.conversation.user.imageURL),
                     maxRadius: 20,
                   ),
                   SizedBox(width: 12,),
@@ -45,7 +51,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Kriss Benwat",style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
+                        Text(widget.conversation.user.name, style: TextStyle( fontSize: 16 ,fontWeight: FontWeight.w600),),
                         SizedBox(height: 6,),
                         Text("Online",style: TextStyle(color: Colors.grey.shade600, fontSize: 13),),
                       ],
