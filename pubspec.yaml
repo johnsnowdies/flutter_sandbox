@@ -31,6 +31,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  xmpp_stone: ^0.3.3
+  shared_preferences: ^2.0.15
+  flutter_spinkit: ^5.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,6 +66,8 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sandbox/screens/homePage.dart';
+import 'package:flutter_sandbox/screens/loginPage.dart';
+
+import 'controllers/localUserController.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MainPage());
 }
 
-class MyApp extends StatelessWidget {
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: HomePage()
-    );
+        title: 'My Dudes',
+        routes: {
+          '/home' : (BuildContext context)=>const HomePage(),
+          '/login' : (BuildContext context)=>const LoginPage(),
+        },
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: LocalUserController().isLogin()
+            ? const HomePage()
+            : const LoginPage());
   }
 }

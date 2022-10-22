@@ -77,6 +77,7 @@ class _ChatPageState extends State<ChatPage> {
                                 fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                         ],
+
                       ),
                     ),
 

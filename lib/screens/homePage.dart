@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sandbox/controllers/localUserController.dart';
+import 'package:flutter_sandbox/main.dart';
 import 'package:flutter_sandbox/screens/chatPage.dart';
+import 'package:flutter_sandbox/screens/loginPage.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +18,13 @@ class HomePage extends StatelessWidget {
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         type: BottomNavigationBarType.fixed,
+        onTap: (value){
+          if (value == 2) {
+            LocalUserController().logout();
+            Navigator.pushReplacementNamed(context, '/login');
+          }
+        },
+
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
@@ -24,8 +35,10 @@ class HomePage extends StatelessWidget {
             label: "Groups",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: "Profile",
+
+            icon: Icon(Icons.logout),
+            label: "Logout",
+
           ),
         ],
       ),
